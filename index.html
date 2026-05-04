@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Web Developer Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:#07111f;
+  color:#fff;
+}
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(7,17,31,.88);
+  backdrop-filter:blur(14px);
+  z-index:1000;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+  color:#38bdf8;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:25px;
+  font-size:15px;
+}
+
+nav a:hover{color:#38bdf8}
+
+.menu{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+section{
+  padding:90px 8%;
+}
+
+.title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:45px;
+}
+
+.title span{color:#38bdf8}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:130px 8% 70px;
+  gap:45px;
+}
+
+.hero-text h4{
+  color:#38bdf8;
+  font-size:20px;
+}
+
+.hero-text h1{
+  font-size:55px;
+  line-height:1.1;
+  margin:15px 0;
+}
+
+.hero-text h1 span{
+  color:#38bdf8;
+}
+
+.typing{
+  font-size:24px;
+  color:#38bdf8;
+  font-weight:600;
+  margin-bottom:18px;
+  min-height:35px;
+}
+
+.hero-text p{
+  color:#cbd5e1;
+  max-width:560px;
+  line-height:1.7;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:13px 28px;
+  background:#38bdf8;
+  color:#07111f;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(56,189,248,.5);
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 35px rgba(56,189,248,.8);
+}
+
+.btn-outline{
+  background:transparent;
+  color:#38bdf8;
+  border:1px solid #38bdf8;
+  margin-left:12px;
+  box-shadow:none;
+}
+
+.hero-img,
+.about-img{
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#38bdf8,#2563eb);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 50px rgba(37,99,235,.6);
+}
+
+.hero-img img,
+.about-img img{
+  width:285px;
+  height:285px;
+  border-radius:50%;
+  object-fit:cover;
+  border:6px solid #07111f;
+}
+
+.about{
+  background:#0f1b2d;
+}
+
+.about-box{
+  display:flex;
+  align-items:center;
+  gap:55px;
+}
+
+.about-content h3{
+  font-size:28px;
+  color:#38bdf8;
+  margin-bottom:15px;
+}
+
+.about-content p{
+  color:#cbd5e1;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+.info{
+  background:#07111f;
+  padding:12px 15px;
+  border-radius:12px;
+  color:#cbd5e1;
+  border:1px solid rgba(56,189,248,.15);
+}
+
+.info strong{
+  color:#38bdf8;
+}
+
+.skills-grid,
+.project-grid,
+.service-grid,
+.education-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#0f1b2d;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  transition:.3s;
+  border:1px solid rgba(56,189,248,.15);
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(56,189,248,.18);
+}
+
+.card h3{
+  color:#38bdf8;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#cbd5e1;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.education{
+  background:#07111f;
+}
+
+.edu-card{
+  position:relative;
+  text-align:left;
+}
+
+.edu-card span{
+  display:inline-block;
+  color:#07111f;
+  background:#38bdf8;
+  padding:5px 14px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+
+.projects{
+  background:#0f1b2d;
+}
+
+.project-card{
+  display:block;
+  overflow:hidden;
+  border-radius:18px;
+  background:#07111f;
+  transition:.3s;
+  text-decoration:none;
+  color:inherit;
+}
+
+.project-card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 20px 50px rgba(56,189,248,.25);
+  cursor:pointer;
+}
+
+.project-card img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+}
+
+.project-card .content{
+  padding:20px;
+}
+
+.project-card h3{
+  color:#38bdf8;
+  margin-bottom:10px;
+}
+
+.project-card p{
+  color:#cbd5e1;
+  font-size:14px;
+}
+
+.contact{
+  text-align:center;
+}
+
+.contact form{
+  max-width:600px;
+  margin:auto;
+}
+
+.contact input,
+.contact textarea{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border:none;
+  outline:none;
+  border-radius:10px;
+  background:#0f1b2d;
+  color:#fff;
+}
+
+.contact textarea{
+  height:130px;
+  resize:none;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  background:#020617;
+  color:#cbd5e1;
+}
+
+@media(max-width:900px){
+  .hero,
+  .about-box{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:768px){
+  .menu{display:block}
+
+  nav{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#07111f;
+    display:none;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+  }
+
+  nav.active{display:flex}
+
+  nav a{
+    margin:12px 0;
+  }
+
+  .hero-text h1{
+    font-size:38px;
+  }
+
+  .typing{
+    font-size:20px;
+  }
+
+  .hero-img,
+  .about-img{
+    width:260px;
+    height:260px;
+  }
+
+  .hero-img img,
+  .about-img img{
+    width:230px;
+    height:230px;
+  }
+
+  .btn-outline{
+    margin-left:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mahammad Arif Developer</div>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h4>Hello, I'm</h4>
+    <h1>Mohammad Arif<br><span>Jainapur</span></h1>
+
+    <div class="typing">
+      I am a <span id="typingText"></span>
+    </div>
+
+    <p>
+      I create modern, responsive and professional websites using HTML,
+      CSS, JavaScript and clean web design techniques.
+    </p>
+
+    <a href="#contact" class="btn">Hire Me</a>
+    <a href="resume.pdf" download class="btn btn-outline">Download Resume</a>
+  </div>
+
+  <div class="hero-img">
+    <img src="Mohammad Arif Jainapur.jpg" alt="Profile Image">
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2 class="title">About <span>Me</span></h2>
+
+  <div class="about-box">
+    <div class="about-img">
+      <img src="Mohammad Arif Jainapur.jpg" alt="About Profile">
+    </div>
+
+    <div class="about-content">
+      <h3>Mohammad Arif Jainapur</h3>
+
+      <p>
+        I am a passionate Web Developer who builds clean, fast, and mobile-friendly websites.
+        I focus on attractive design, smooth user experience, and professional layouts for
+        businesses, colleges, portfolios, and landing pages.
+      </p>
+
+      <p>
+        My goal is to help clients grow their online presence with modern, responsive,
+        and visually appealing websites.
+      </p>
+
+      <div class="info-grid">
+        <div class="info"><strong>Name:</strong> Mohammad Arif Jainapur</div>
+        <div class="info"><strong>Role:</strong> Web Developer</div>
+        <div class="info"><strong>Work:</strong> Freelancer</div>
+        <div class="info"><strong>Location:</strong> India</div>
+      </div>
+
+      <a href="resume.pdf" download class="btn">Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<section class="education" id="education">
+  <h2 class="title">My <span>Education</span></h2>
+
+  <div class="education-grid">
+    <div class="card edu-card">
+      <span>2026</span>
+      <h3>Web Development</h3>
+      <p>
+        Learning HTML, CSS, JavaScript, responsive design, website UI,
+        portfolio websites, landing pages, and frontend development.
+      </p>
+    </div>
+
+    <div class="card edu-card">
+      <span>College</span>
+      <h3>Student</h3>
+      <p>
+        Currently improving technical skills, communication, freelancing,
+        and practical web development projects.
+      </p>
+    </div>
+
+    <div class="card edu-card">
+      <span>Skills</span>
+      <h3>Frontend Development</h3>
+      <p>
+        Focused on building clean, professional, mobile-friendly and
+        modern websites for clients and businesses.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="title">My <span>Skills</span></h2>
+
+  <div class="skills-grid">
+    <div class="card">
+      <h3>HTML</h3>
+      <p>Clean and semantic website structure.</p>
+    </div>
+
+    <div class="card">
+      <h3>CSS</h3>
+      <p>Responsive, animated and modern UI design.</p>
+    </div>
+
+    <div class="card">
+      <h3>JavaScript</h3>
+      <p>Interactive menus, sliders and dynamic features.</p>
+    </div>
+
+    <div class="card">
+      <h3>Responsive Design</h3>
+      <p>Mobile, tablet and desktop friendly layouts.</p>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <h2 class="title">My <span>Projects</span></h2>
+
+  <div class="project-grid">
+
+    <a href="https://the-dessert-doctor.netlify.app/" target="_blank" class="project-card">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Business Website">
+      <div class="content">
+        <h3>Business Website</h3>
+        <p>Modern responsive website for business and services.</p>
+      </div>
+    </a>
+
+    <a href="https://imperialcollege.netlify.app/" target="_blank" class="project-card">
+      <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=800&q=80" alt="College Website">
+      <div class="content">
+        <h3>College Website</h3>
+        <p>Professional educational website with premium layout.</p>
+      </div>
+    </a>
+
+    <a href="" target="" class="project-card">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Portfolio Website">
+      <div class="content">
+        <h3>Portfolio Website</h3>
+        <p>Personal portfolio website for freelancer branding.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="title">My <span>Services</span></h2>
+
+  <div class="service-grid">
+    <div class="card">
+      <h3>Website Design</h3>
+      <p>Beautiful and professional website UI design.</p>
+    </div>
+
+    <div class="card">
+      <h3>Landing Page</h3>
+      <p>High-converting landing pages for business.</p>
+    </div>
+
+    <div class="card">
+      <h3>Website Redesign</h3>
+      <p>Upgrade old websites into modern responsive designs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="title">Contact <span>Me</span></h2>
+
+  <form onsubmit="sendToWhatsApp(event)">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" placeholder="Your Message" required></textarea>
+    <button class="btn" type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 Mohammad Arif Jainapur | All Rights Reserved</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("active");
+}
+
+document.querySelectorAll("nav a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("nav").classList.remove("active");
+  });
+});
+
+/* WHATSAPP CONTACT FORM */
+function sendToWhatsApp(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let message = document.getElementById("message").value.trim();
+
+  let phoneNumber = "917618731273";
+
+  let text =
+    "Hello, I want to contact you.%0A%0A" +
+    "Name: " + encodeURIComponent(name) + "%0A" +
+    "Email: " + encodeURIComponent(email) + "%0A" +
+    "Message: " + encodeURIComponent(message);
+
+  let whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + text;
+
+  window.open(whatsappURL, "_blank");
+}
+
+/* TYPING EFFECT */
+const words = ["Web Developer", "Freelancer", "Frontend Designer"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingText = document.getElementById("typingText");
+
+function typeEffect(){
+  const currentWord = words[wordIndex];
+
+  if(isDeleting){
+    typingText.textContent = currentWord.substring(0, charIndex--);
+  }else{
+    typingText.textContent = currentWord.substring(0, charIndex++);
+  }
+
+  if(!isDeleting && charIndex === currentWord.length + 1){
+    isDeleting = true;
+    setTimeout(typeEffect, 1200);
+    return;
+  }
+
+  if(isDeleting && charIndex === 0){
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+  }
+
+  setTimeout(typeEffect, isDeleting ? 70 : 120);
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
